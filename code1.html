@@ -3,112 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillCraft Technology | Digital Transformation Experts</title>
-    <meta name="description" content="SkillCraft Technology helps businesses thrive in the digital age with cutting-edge web, mobile, and AI solutions. Partner with us for your digital transformation journey.">
+    <title>Scriptify  | Next-Gen Tech Solutions</title>
+    <meta name="description" content="Cutting-edge technology solutions for the digital age. Web, mobile, AI and cloud development services.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --dark: #14213d;
+            --light: #f8f9fa;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 15px 30px rgba(0,0,0,0.2);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #6c63ff;
-            --secondary-color: #4d44db;
-            --accent-color: #ff6584;
-            --dark-color: #2f2e41;
-            --light-color: #f8f9fa;
-            --text-color: #333;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
 
         body {
-            background-color: var(--light-color);
-            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Navigation Bar */
-        .navbar {
+        /* Preloader */
+        .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1rem 5%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             z-index: 1000;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
         .navbar.scrolled {
-            background-color: rgba(108, 99, 255, 0.98);
-            padding: 0.7rem 5%;
+            padding: 1rem 5%;
+            background: rgba(67, 97, 238, 0.95);
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2);
         }
 
-        .navbar.scrolled .logo,
-        .navbar.scrolled .nav-links a {
-            color: white;
+        .navbar.scrolled * {
+            color: white !important;
         }
 
-        .navbar.scrolled .menu-btn {
-            color: white;
+        .navbar.scrolled .nav-links a::after {
+            background: white;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
         }
 
         .logo i {
-            margin-right: 0.5rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         .nav-links {
             display: flex;
+            gap: 2rem;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-            position: relative;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text);
             font-weight: 500;
-            font-size: 1.1rem;
+            position: relative;
             transition: var(--transition);
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background: var(--primary);
             transition: var(--transition);
         }
 
@@ -116,28 +156,19 @@
             width: 100%;
         }
 
-        .navbar.scrolled .nav-links a:hover {
-            color: white;
-        }
-
-        .navbar.scrolled .nav-links a::after {
-            background-color: white;
-        }
-
         .menu-btn {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            cursor: pointer;
             display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 5%;
-            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 255, 255, 0.9));
             position: relative;
             overflow: hidden;
         }
@@ -146,25 +177,19 @@
             content: '';
             position: absolute;
             top: -50%;
-            right: -20%;
-            width: 70vh;
-            height: 70vh;
-            background: radial-gradient(circle, var(--primary-color), transparent 70%);
-            opacity: 0.2;
+            right: -30%;
+            width: 80vh;
+            height: 80vh;
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+            opacity: 0.1;
             border-radius: 50%;
             z-index: -1;
             animation: pulse 8s infinite alternate;
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-            100% {
-                transform: scale(1.2);
-                opacity: 0.3;
-            }
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.2); opacity: 0.2; }
         }
 
         .hero-content {
@@ -178,116 +203,126 @@
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            color: var(--dark-color);
             line-height: 1.2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             animation: slideInLeft 1s ease;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            color: #555;
-            animation: slideInLeft 1.2s ease;
+            color: var(--text-light);
+            animation: slideInRight 1s ease;
         }
 
         .btn {
             display: inline-block;
             padding: 0.8rem 2.5rem;
-            background-color: var(--primary-color);
+            background: var(--gradient);
             color: white;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
             font-weight: 500;
             text-decoration: none;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
             animation: fadeIn 1.5s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
-        }
-
-        .btn-accent:hover {
-            background-color: #ff4d6d;
-            box-shadow: 0 8px 20px rgba(255, 101, 132, 0.4);
-        }
-
-        /* Tagline Banner */
-        .tagline-banner {
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
             position: relative;
             overflow: hidden;
         }
 
-        .tagline-banner::before {
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255,255,255,0.2) 50%, 
-                transparent 100%);
-            animation: shine 3s infinite;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .btn:hover::after {
+            opacity: 1;
         }
 
-        .tagline-text {
-            position: relative;
-            z-index: 1;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
         }
 
-        .tagline-highlight {
-            background-color: rgba(255,255,255,0.2);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin: 0 0.3rem;
-            display: inline-block;
-            animation: pulseScale 2s infinite;
+        .btn-outline:hover {
+            color: white;
         }
 
-        @keyframes pulseScale {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Floating Tech Elements */
+        .floating-tech {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .tech-1 {
+            top: 20%;
+            left: 10%;
+            font-size: 5rem;
+            animation-delay: 0s;
+        }
+
+        .tech-2 {
+            top: 60%;
+            right: 15%;
+            font-size: 4rem;
+            animation-delay: 1s;
+        }
+
+        .tech-3 {
+            bottom: 10%;
+            left: 20%;
+            font-size: 3rem;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         /* Features Section */
-        .features {
-            padding: 5rem 5%;
-            background-color: white;
+        .section {
+            padding: 6rem 5%;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark-color);
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
         }
@@ -295,37 +330,38 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 5px;
         }
 
         .section-title p {
-            color: #777;
+            color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
         .features-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .feature-card {
-            background-color: white;
+            background: white;
             padding: 2.5rem 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
-            transform: translateY(20px);
+            transform: translateY(50px);
             opacity: 0;
-            border-top: 3px solid var(--primary-color);
+            border-top: 5px solid var(--primary);
         }
 
         .feature-card.animated {
@@ -334,55 +370,38 @@
         }
 
         .feature-card:nth-child(2) {
-            border-top-color: var(--accent-color);
+            border-top-color: var(--secondary);
         }
 
         .feature-card:nth-child(3) {
-            border-top-color: #00b894;
+            border-top-color: var(--accent);
         }
 
         .feature-card:nth-child(4) {
-            border-top-color: #0984e3;
+            border-top-color: #4ad66d;
         }
 
         .feature-card:nth-child(5) {
-            border-top-color: #fdcb6e;
+            border-top-color: #7209b7;
         }
 
         .feature-card:nth-child(6) {
-            border-top-color: #6c5ce7;
+            border-top-color: #f8961e;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) !important;
+            box-shadow: var(--shadow-hover);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             transition: var(--transition);
-        }
-
-        .feature-card:nth-child(2) .feature-icon {
-            color: var(--accent-color);
-        }
-
-        .feature-card:nth-child(3) .feature-icon {
-            color: #00b894;
-        }
-
-        .feature-card:nth-child(4) .feature-icon {
-            color: #0984e3;
-        }
-
-        .feature-card:nth-child(5) .feature-icon {
-            color: #fdcb6e;
-        }
-
-        .feature-card:nth-child(6) .feature-icon {
-            color: #6c5ce7;
         }
 
         .feature-card:hover .feature-icon {
@@ -392,29 +411,29 @@
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark-color);
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         /* About Section */
-        .about {
-            padding: 5rem 5%;
-            background-color: #f8f9fa;
-        }
-
         .about-container {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 4rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transform: translateX(-20px);
+            transform: translateX(-100px);
             opacity: 0;
             position: relative;
         }
@@ -428,6 +447,7 @@
             width: 100%;
             height: auto;
             transition: var(--transition);
+            display: block;
         }
 
         .about-image:hover img {
@@ -436,7 +456,7 @@
 
         .about-content {
             flex: 1;
-            transform: translateX(20px);
+            transform: translateX(100px);
             opacity: 0;
         }
 
@@ -447,19 +467,59 @@
 
         .about-content h2 {
             font-size: 2.5rem;
-            color: var(--dark-color);
             margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .about-content p {
             margin-bottom: 1.5rem;
-            color: #555;
+            color: var(--text-light);
+        }
+
+        .skill-bars {
+            margin-top: 2rem;
+        }
+
+        .skill-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-percent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
         }
 
         /* Stats Section */
         .stats {
-            padding: 4rem 5%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--gradient);
             color: white;
             position: relative;
             overflow: hidden;
@@ -472,7 +532,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://cdn.pixabay.com/photo/2016/11/29/08/41/abstract-1868624_1280.jpg') center/cover;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
             opacity: 0.1;
             z-index: 0;
         }
@@ -489,20 +549,27 @@
         }
 
         .stat-item {
-            padding: 1.5rem;
+            padding: 2rem;
             background: rgba(255,255,255,0.1);
-            border-radius: 10px;
+            border-radius: 15px;
             backdrop-filter: blur(5px);
             transition: var(--transition);
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        .stat-item.animated {
+            transform: scale(1);
+            opacity: 1;
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05) !important;
             background: rgba(255,255,255,0.15);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             position: relative;
@@ -512,7 +579,7 @@
         .stat-number::after {
             content: '+';
             position: absolute;
-            right: -15px;
+            right: -20px;
             top: 0;
             font-size: 2rem;
         }
@@ -522,12 +589,7 @@
             opacity: 0.9;
         }
 
-        /* Testimonials Section */
-        .testimonials {
-            padding: 5rem 5%;
-            background-color: white;
-        }
-
+        /* Testimonials */
         .testimonials-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -537,13 +599,13 @@
         }
 
         .testimonial-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            transform: translateY(20px);
+            transform: translateY(50px);
             opacity: 0;
         }
 
@@ -553,24 +615,27 @@
         }
 
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) !important;
+            box-shadow: var(--shadow-hover);
         }
 
         .testimonial-card::before {
             content: '\201C';
-            font-size: 5rem;
-            color: rgba(108, 99, 255, 0.1);
+            font-size: 6rem;
+            color: rgba(67, 97, 238, 0.1);
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             line-height: 1;
+            font-family: serif;
         }
 
         .testimonial-content {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
             z-index: 1;
+            font-style: italic;
+            color: var(--text-light);
         }
 
         .testimonial-author {
@@ -579,92 +644,154 @@
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 1rem;
+            margin-right: 1.5rem;
+            border: 3px solid var(--primary);
+            padding: 3px;
         }
 
         .author-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
 
         .author-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
         }
 
         .author-info p {
             font-size: 0.9rem;
-            color: #777;
+            color: var(--text-light);
         }
 
         .testimonial-rating {
             color: #FFD700;
             margin-top: 0.5rem;
+            font-size: 0.9rem;
         }
 
-        /* Client Logos */
-        .clients {
-            padding: 3rem 5%;
-            background-color: #f8f9fa;
-        }
-
-        .clients-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
+        /* Projects */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .client-logo {
-            height: 60px;
-            filter: grayscale(100%);
-            opacity: 0.7;
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: scale(0.95);
+            opacity: 0;
+        }
+
+        .project-card.animated {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
         }
 
-        .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
+        .project-card:hover .project-image img {
             transform: scale(1.1);
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 5rem 5%;
-            background-color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
+        .project-tags {
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 70vh;
-            height: 70vh;
-            background: radial-gradient(circle, var(--primary-color), transparent 70%);
-            opacity: 0.1;
-            border-radius: 50%;
-            z-index: 0;
-            animation: pulse 8s infinite alternate;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
         }
 
+        .project-tag {
+            background: rgba(255,255,255,0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--primary);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-links a:first-child {
+            background: var(--primary);
+            color: white;
+        }
+
+        .project-links a:last-child {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .project-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
-            position: relative;
-            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -678,13 +805,13 @@
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 1.5rem;
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
+            padding: 2rem;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            transform: translateY(20px);
+            transform: translateY(50px);
             opacity: 0;
         }
 
@@ -694,16 +821,16 @@
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) !important;
+            box-shadow: var(--shadow-hover);
         }
 
         .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            background: rgba(108, 99, 255, 0.1);
-            width: 50px;
-            height: 50px;
+            font-size: 1.8rem;
+            color: white;
+            background: var(--gradient);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -712,27 +839,27 @@
         }
 
         .contact-text h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--dark-color);
+            color: var(--dark);
         }
 
         .contact-text p, .contact-text a {
-            color: #555;
+            color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .contact-text a:hover {
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .contact-form {
-            background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            transform: translateY(20px);
+            transform: translateY(50px);
             opacity: 0;
         }
 
@@ -743,29 +870,28 @@
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--dark);
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
             font-size: 1rem;
             transition: var(--transition);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
         }
 
         textarea.form-control {
@@ -773,45 +899,12 @@
             resize: vertical;
         }
 
-        /* Rating Display */
-        .rating-display {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transform: translateY(20px);
-            opacity: 0;
-        }
-
-        .rating-display.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .rating-stars {
-            color: #FFD700;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .rating-text {
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        .download-count {
-            font-size: 0.9rem;
-            color: #777;
-            margin-top: 0.5rem;
-        }
-
-        /* Newsletter Section */
+        /* Newsletter */
         .newsletter {
-            padding: 4rem 5%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
             text-align: center;
+            padding: 4rem 5%;
+            background: var(--dark);
+            color: white;
         }
 
         .newsletter-container {
@@ -820,13 +913,17 @@
         }
 
         .newsletter h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .newsletter p {
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         .newsletter-form {
@@ -851,80 +948,155 @@
 
         /* Footer */
         .footer {
-            background-color: var(--dark-color);
+            background: var(--dark);
             color: white;
-            padding: 3rem 5%;
-            text-align: center;
+            padding: 4rem 5% 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-logo i {
-            margin-right: 0.5rem;
-        }
-
-        .footer-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+        .footer-col h3 {
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
+            opacity: 0.8;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a:hover {
-            color: var(--primary-color);
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
             color: white;
-            font-size: 1.5rem;
+            border-radius: 50%;
             transition: var(--transition);
         }
 
         .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
+            background: var(--gradient);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            width: 100%;
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.3);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
         }
 
         /* Animations */
         @keyframes slideInLeft {
             from {
-                transform: translateX(-50px);
+                transform: translateX(-100px);
                 opacity: 0;
             }
             to {
@@ -935,7 +1107,7 @@
 
         @keyframes slideInRight {
             from {
-                transform: translateX(50px);
+                transform: translateX(100px);
                 opacity: 0;
             }
             to {
@@ -955,13 +1127,12 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero {
-                padding-top: 8rem;
-                padding-bottom: 3rem;
-            }
-
             .about-container {
                 flex-direction: column;
+            }
+
+            .about-image, .about-content {
+                transform: none !important;
             }
         }
 
@@ -972,16 +1143,17 @@
 
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
+                width: 80%;
+                height: 100vh;
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 gap: 2rem;
                 transition: var(--transition);
+                z-index: 1000;
             }
 
             .nav-links.active {
@@ -989,69 +1161,67 @@
             }
 
             .navbar.scrolled .nav-links {
-                background-color: var(--primary-color);
-                top: 70px;
-                height: calc(100vh - 70px);
-            }
-
-            .navbar.scrolled .nav-links a {
-                color: white;
+                background: var(--primary-dark);
             }
 
             .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-content p {
-                font-size: 1.1rem;
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .stat-number {
+                font-size: 2.8rem;
             }
         }
 
         @media (max-width: 576px) {
             .hero-content h1 {
-                font-size: 2.2rem;
-                margin-bottom: 1rem;
+                font-size: 2rem;
             }
 
             .hero-content p {
                 font-size: 1rem;
-                margin-bottom: 1.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 4rem 5%;
             }
 
             .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .btn {
-                padding: 0.7rem 1.8rem;
-                font-size: 1rem;
-            }
-
-            .stat-number {
-                font-size: 2.2rem;
-            }
-
-            .stat-label {
-                font-size: 1rem;
-            }
-
-            .tagline-banner {
-                font-size: 1rem;
-                padding: 1rem;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Navigation -->
     <nav class="navbar">
         <a href="#" class="logo">
-            <i class="fas fa-laptop-code"></i> SkillCraft
+            <i class="fas fa-rocket"></i> Scriptify 
         </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#features">Features</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1060,32 +1230,33 @@
         </div>
     </nav>
 
-    <!-- Tagline Banner -->
-    <div class="tagline-banner">
-        <span class="tagline-text">
-            🚀 <span class="tagline-highlight">Trending Now:</span> Transform your business with our 
-            <span class="tagline-highlight">AI-powered solutions</span> - 
-            <span class="tagline-highlight">Book a FREE consultation today!</span> 🚀
-        </span>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="floating-tech tech-1">
+            <i class="fab fa-react"></i>
+        </div>
+        <div class="floating-tech tech-2">
+            <i class="fas fa-cloud"></i>
+        </div>
+        <div class="floating-tech tech-3">
+            <i class="fas fa-robot"></i>
+        </div>
+        
         <div class="hero-content">
-            <h1><span style="color: var(--primary-color);">Digital Transformation</span> Made Simple & Powerful</h1>
-            <p>We help businesses <strong>accelerate growth</strong> through <strong>cutting-edge technology solutions</strong>. Our team of experts delivers <strong>customized, scalable</strong> digital products that drive real results.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
+            <h1>Building The Future With Innovative Technology</h1>
+            <p>We create cutting-edge digital solutions that help businesses thrive in the modern world. Our expertise spans web, mobile, AI and cloud technologies.</p>
+            <div class="btn-group">
                 <a href="#contact" class="btn">Get Started</a>
-                <a href="#features" class="btn btn-accent">Explore Services</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Services Section -->
+    <section class="section" id="services">
         <div class="section-title">
             <h2>Our Services</h2>
-            <p>We offer comprehensive digital solutions to help your business thrive in today's competitive landscape.</p>
+            <p>We offer comprehensive digital solutions to transform your business and drive growth</p>
         </div>
         <div class="features-container">
             <div class="feature-card">
@@ -1093,13 +1264,13 @@
                     <i class="fas fa-code"></i>
                 </div>
                 <h3>Web Development</h3>
-                <p>Custom websites and web applications built with React, Angular, and Vue.js for exceptional performance and user experience.</p>
+                <p>Modern, responsive websites and web applications built with React, Angular, and Vue.js for exceptional performance.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
-                <h3>Mobile Apps</h3>
+                <h3>Mobile Development</h3>
                 <p>Cross-platform mobile applications using Flutter and React Native for seamless iOS and Android experiences.</p>
             </div>
             <div class="feature-card">
@@ -1111,10 +1282,17 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI & ML</h3>
+                <p>Custom AI and machine learning models to automate processes, analyze data, and enhance decision-making.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <h3>Digital Marketing</h3>
-                <p>Data-driven marketing strategies including SEO, PPC, and social media to maximize your online presence.</p>
+                <h3>Data Analytics</h3>
+                <p>Powerful data visualization and business intelligence solutions to uncover insights and drive growth.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -1123,67 +1301,130 @@
                 <h3>Cyber Security</h3>
                 <p>Comprehensive security assessments, penetration testing, and compliance solutions to protect your business.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI Solutions</h3>
-                <p>Custom AI and machine learning models to automate processes, analyze data, and enhance decision-making.</p>
-            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section" id="about">
         <div class="about-container">
             <div class="about-image">
-                <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_1280.jpg" alt="About Us">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Team">
             </div>
             <div class="about-content">
-                <h2>Why Choose SkillCraft Technology?</h2>
-                <p>Founded in 2015, we've helped <strong>250+ businesses</strong> across various industries achieve their digital transformation goals.</p>
-                <p>Our <strong>award-winning team</strong> combines technical expertise with business acumen to deliver solutions that drive <strong>measurable results</strong>.</p>
-                <p>We're not just developers - we're <strong>strategic partners</strong> committed to your long-term success in the digital landscape.</p>
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <a href="#contact" class="btn">Schedule a Call</a>
-                    <a href="#testimonials" class="btn btn-accent">Client Stories</a>
+                <h2>About TechNova</h2>
+                <p>Founded in 2020, TechNova has quickly established itself as a leader in innovative technology solutions. Our team of passionate engineers, designers, and strategists work together to deliver exceptional results for our clients.</p>
+                <p>We believe in pushing boundaries and exploring new technologies to create solutions that not only meet but exceed our clients' expectations.</p>
+                
+                <div class="skill-bars">
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span class="skill-name">Web Development</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span class="skill-name">Mobile Development</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span class="skill-name">Cloud Architecture</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="section stats">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-number" id="clients-counter">250</div>
-                <div class="stat-label">Satisfied Clients</div>
+                <div class="stat-number" data-count="150">0</div>
+                <div class="stat-label">Happy Clients</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" id="projects-counter">500</div>
-                <div class="stat-label">Projects Delivered</div>
+                <div class="stat-number" data-count="300">0</div>
+                <div class="stat-label">Projects Completed</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" id="downloads-counter">10000</div>
-                <div class="stat-label">Mobile App Downloads</div>
+                <div class="stat-number" data-count="25">0</div>
+                <div class="stat-label">Team Members</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" id="rating-counter">4.9</div>
+                <div class="stat-number" data-count="4.9">0</div>
                 <div class="stat-label">Average Rating</div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <!-- Projects Section -->
+    <section class="section" id="projects">
         <div class="section-title">
-            <h2>What Our Clients Say</h2>
-            <p>Don't just take our word for it - hear from businesses we've helped transform.</p>
+            <h2>Our Projects</h2>
+            <p>Explore some of our recent work and see how we've helped our clients achieve their goals</p>
+        </div>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-commerce Platform">
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>E-commerce Platform</h3>
+                    <p>A full-featured online store with payment integration, inventory management, and analytics dashboard.</p>
+                    <div class="project-links">
+                        <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Business Analytics Dashboard">
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">D3.js</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Business Analytics Dashboard</h3>
+                    <p>Interactive data visualization platform with real-time updates and predictive analytics capabilities.</p>
+                    <div class="project-links">
+                        <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="section-title">
+            <h2>Client Testimonials</h2>
+            <p>Hear what our clients have to say about working with us</p>
         </div>
         <div class="testimonials-container">
             <div class="testimonial-card">
                 <div class="testimonial-content">
-                    <p>"SkillCraft transformed our e-commerce platform, resulting in a 300% increase in conversions. Their team was professional, knowledgeable, and delivered beyond our expectations."</p>
+                    <p>"TechNova transformed our e-commerce platform, resulting in a 300% increase in conversions. Their team was professional, knowledgeable, and delivered beyond our expectations."</p>
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">
@@ -1204,7 +1445,7 @@
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-content">
-                    <p>"The mobile app developed by SkillCraft has been instrumental in growing our user base. Their attention to detail and user experience focus set them apart."</p>
+                    <p>"The mobile app developed by TechNova has been instrumental in growing our user base. Their attention to detail and user experience focus set them apart."</p>
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">
@@ -1218,7 +1459,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
                 </div>
@@ -1239,7 +1480,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
                         </div>
                     </div>
                 </div>
@@ -1247,24 +1488,11 @@
         </div>
     </section>
 
-    
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="newsletter-container">
-            <h3>Stay Updated With Tech Trends</h3>
-            <p>Subscribe to our newsletter for the latest insights, tips, and exclusive offers.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit" class="btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="section" id="contact">
         <div class="section-title">
-            <h2>Ready to Transform Your Business?</h2>
-            <p>Get in touch with our team to discuss your project requirements.</p>
+            <h2>Get In Touch</h2>
+            <p>Ready to start your project? Contact us today to discuss your requirements</p>
         </div>
         <div class="contact-container">
             <div class="contact-info">
@@ -1274,7 +1502,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>Location</h3>
-                        <p>123 Tech Street, Innovation City, IN 560001</p>
+                        <p>123 Tech Street, Bangalore, India 560001</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1292,7 +1520,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>Email</h3>
-                        <p><a href="mailto:info@skillcrafttech.com">info@skillcrafttech.com</a></p>
+                        <p><a href="mailto:contact@technova.dev">contact@technova.dev</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1303,17 +1531,6 @@
                         <h3>Working Hours</h3>
                         <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                     </div>
-                </div>
-                <div class="rating-display">
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="rating-text">Rated 4.8/5 by 500+ clients</div>
-                    <div class="download-count">10,000+ app downloads worldwide</div>
                 </div>
             </div>
             <div class="contact-form">
@@ -1340,55 +1557,96 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h3>Subscribe To Our Newsletter</h3>
+            <p>Stay updated with the latest tech trends, tips, and exclusive offers</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <a href="#" class="footer-logo">
-                <i class="fas fa-laptop-code"></i> SkillCraft
-            </a>
-            <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="footer-col footer-about">
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-rocket"></i> TechNova
+                </a>
+                <p>We build innovative technology solutions to help businesses grow and succeed in the digital age.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 SkillCraft Technology. All Rights Reserved.</p>
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
             </div>
+            <div class="footer-col footer-links">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile Development</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Solutions</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> AI & ML</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Data Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cyber Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Bangalore, India</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> contact@technova.dev</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 TechNova | Built by [Your Name] - 2nd Year B.Tech Student</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Navigation Menu Scroll Effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
         });
 
         // Mobile Menu Toggle
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
-        menuBtn.addEventListener('click', function() {
+        menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuBtn.querySelector('i').classList.toggle('fa-times');
-            menuBtn.querySelector('i').classList.toggle('fa-bars');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.classList.toggle('active', window.scrollY > 300);
         });
 
         // Smooth Scrolling for Navigation Links
@@ -1409,7 +1667,6 @@
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
                         menuBtn.querySelector('i').classList.remove('fa-times');
-                        menuBtn.querySelector('i').classList.add('fa-bars');
                     }
                 }
             });
@@ -1417,23 +1674,22 @@
 
         // Animation on Scroll
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-card, .about-image, .about-content, .contact-item, .contact-form, .rating-display, .testimonial-card');
+            const elements = document.querySelectorAll('.feature-card, .about-image, .about-content, .stat-item, .project-card, .testimonial-card, .contact-item, .contact-form');
             const windowHeight = window.innerHeight;
+            const triggerPoint = windowHeight / 1.2;
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 
-                if (elementPosition < windowHeight - 100) {
+                if (elementPosition < triggerPoint) {
                     element.classList.add('animated');
                 }
             });
         }
 
         // Initialize animations on page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', () => {
             animateOnScroll();
-            
-            // Trigger the scroll event to check initial positions
             window.dispatchEvent(new Event('scroll'));
         });
 
@@ -1446,7 +1702,7 @@
             const speed = 200;
             
             counters.forEach(counter => {
-                const target = +counter.textContent;
+                const target = +counter.getAttribute('data-count');
                 const count = +counter.textContent;
                 const increment = target / speed;
                 
@@ -1472,11 +1728,33 @@
 
         observer.observe(statsSection);
 
-        // LinkedIn share button functionality
-        document.querySelector('.fa-linkedin-in').addEventListener('click', function(e) {
+        // Animate skill bars when about section is in view
+        const aboutSection = document.querySelector('#about');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = document.querySelectorAll('.progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        skillObserver.observe(aboutSection);
+
+        // LinkedIn Share Button
+        document.querySelector('.fa-linkedin-in').addEventListener('click', (e) => {
             e.preventDefault();
             const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent(document.title);
+            const title = "Check out my tech portfolio project - TechNova Solutions";
+            const summary = "I built this responsive tech portfolio website with animations and interactive elements as part of my learning journey.";
+            const source = encodeURIComponent("TechNova Portfolio");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
         });
     </script>
